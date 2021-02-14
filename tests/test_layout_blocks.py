@@ -75,3 +75,11 @@ def test_section_block(section_block: SectionBlock):
         "fields": [item.render() for item in section_block.fields],
         "accessory": section_block.accessory.render(),
     }
+
+
+def test_header_block(header_block: SectionBlock):
+    assert header_block.render() == {
+        "type": header_block.btype,
+        "block_id": header_block.block_id,
+        "text": header_block.text.render(),
+    }

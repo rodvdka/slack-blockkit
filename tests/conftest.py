@@ -1,6 +1,7 @@
-import pytest
 import random
 import typing
+
+import pytest
 
 from slack_blockkit.block_element import (
     ButtonElement,
@@ -26,6 +27,7 @@ from slack_blockkit.layout_block import (
     ContextBlock,
     DividerBlock,
     FileBlock,
+    HeaderBlock,
     ImageBlock,
     InputBlock,
     SectionBlock,
@@ -247,6 +249,11 @@ def section_block() -> SectionBlock:
             title=PlainTextObject(text="Logo"),
         ),
     )
+
+
+@pytest.fixture
+def header_block() -> HeaderBlock:
+    return HeaderBlock(text=PlainTextObject(text="This is a header block"),)
 
 
 @pytest.fixture

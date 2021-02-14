@@ -1,7 +1,8 @@
 from typing import List
 
-from .block import Block
 from slack_blockkit.utils import get_validated_input
+
+from .block import Block
 
 
 class TextObject(Block):

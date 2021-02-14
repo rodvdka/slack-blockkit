@@ -1,13 +1,10 @@
 from datetime import date
 from typing import List
 
-from .block import Block
-from .composition_object import (
-    ConfirmObject,
-    OptionObject,
-    TextObject,
-)
 from slack_blockkit.utils import get_validated_input
+
+from .block import Block
+from .composition_object import ConfirmObject, OptionObject, TextObject
 
 
 class BlockElement(Block):

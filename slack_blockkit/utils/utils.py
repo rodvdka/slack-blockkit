@@ -1,5 +1,4 @@
 import json
-
 from typing import List, Type
 
 from slack_blockkit.block import Block

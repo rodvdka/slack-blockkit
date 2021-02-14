@@ -3,11 +3,11 @@ Test composition objects.
 """
 
 from slack_blockkit.composition_object import (
-    PlainTextObject,
-    MarkdownTextObject,
     ConfirmObject,
+    MarkdownTextObject,
     OptionGroupObject,
     OptionObject,
+    PlainTextObject,
     TextObject,
 )
 
@@ -16,7 +16,7 @@ def test_plain_text_object(plain_text_object: PlainTextObject):
     assert plain_text_object.render() == {
         "type": TextObject.BTYPE_PLAINTEXT,
         "text": plain_text_object.text,
-        "emoji": plain_text_object.emoji
+        "emoji": plain_text_object.emoji,
     }
 
 
@@ -24,7 +24,7 @@ def test_markdown_text_object(markdown_text_object: MarkdownTextObject):
     assert markdown_text_object.render() == {
         "type": markdown_text_object.btype,
         "text": markdown_text_object.text,
-        "verbatim": markdown_text_object.verbatim
+        "verbatim": markdown_text_object.verbatim,
     }
 
 
@@ -34,7 +34,7 @@ def test_confirm_object(confirm_object: ConfirmObject):
         "text": confirm_object.text.render(),
         "confirm": confirm_object.confirm.render(),
         "deny": confirm_object.deny.render(),
-        "style": confirm_object.style
+        "style": confirm_object.style,
     }
 
 

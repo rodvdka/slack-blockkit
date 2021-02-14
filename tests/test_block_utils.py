@@ -2,6 +2,8 @@
 Test block utils.
 """
 
+from slack_blockkit.block_element import PrimaryButtonElement
+from slack_blockkit.composition_object import MarkdownTextObject, PlainTextObject
 from slack_blockkit.utils import get_blocks
 from slack_blockkit.utils.blocks import (
     get_checkmark,
@@ -10,8 +12,6 @@ from slack_blockkit.utils.blocks import (
     get_text_block_with_accessory,
     get_text_block_with_image,
 )
-from slack_blockkit.block_element import PrimaryButtonElement
-from slack_blockkit.composition_object import MarkdownTextObject, PlainTextObject
 
 
 def test_get_blocks():
@@ -82,11 +82,11 @@ def test_get_task_block():
         {
             "type": task_block[0]["type"],
             "text": task_block[0]["text"],
-            "verbatim": task_block[0]["verbatim"]
+            "verbatim": task_block[0]["verbatim"],
         },
         {
             "type": task_block[1]["type"],
             "text": task_block[1]["text"],
-            "verbatim": task_block[1]["verbatim"]
-        }
+            "verbatim": task_block[1]["verbatim"],
+        },
     ]

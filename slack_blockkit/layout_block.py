@@ -1,10 +1,9 @@
 import uuid
-
 from typing import List
 
 from .block import Block
-from .composition_object import TextObject
 from .block_element import BlockElement
+from .composition_object import TextObject
 
 
 class LayoutBlock(Block):
@@ -24,7 +23,9 @@ class LayoutBlock(Block):
         # generate a block ID if none is passed
         if block_id and len(block_id) > 255:
             raise AttributeError(
-                "block_id cannot be greater than 255 characters, but is {}".format(block_id)
+                "block_id cannot be greater than 255 characters, but is {}".format(
+                    block_id
+                )
             )
         self.block_id = block_id if block_id else self.generate_block_id()
         super().__init__(btype=btype)
@@ -240,3 +241,31 @@ class SectionBlock(LayoutBlock):
         self.text = text
         self.fields = fields
         self.accessory = accessory
+
+
+class HeaderBlock(LayoutBlock):
+    """
+    Basic header block. For more information, see: https://api.slack.com/reference/block-kit/blocks#header
+
+    Args:
+        text (TextObject): The text for the block, in the form of a :class:`TextObject`. Maximum length for the text
+            in this field is 3000 characters. This field is not required if a valid array of fields objects is provided
+            instead.
+        block_id (str): A string acting as a unique identifier for a block. You can use this ``block_id`` when you
+            receive an interaction payload to identify the source of the action. If not specified, a ``block_id``
+            will be generated. Maximum length for this field is 255 characters.
+    """
+
+    def __init__(
+        self, text: TextObject, block_id: str = None,
+    ):
+        super().__init__(btype="header", block_id=block_id)
+
+        # field validation
+        # text can be no longer than 3000 characters
+        if text.get_text_length() > 3000:
+            raise AttributeError(
+                f"text cannot be more than 3000 characters, but got {text.get_text_length()}"
+            )
+
+        self.text = text
