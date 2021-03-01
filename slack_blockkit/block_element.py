@@ -55,7 +55,8 @@ class ButtonElement(BlockElement):
 
     STYLE_PRIMARY = "primary"
     STYLE_DANGER = "danger"
-    STYLE_DEFAULT = "default"
+    # Style Default is now None
+    STYLE_DEFAULT = None
 
     def __init__(
         self,
@@ -63,7 +64,7 @@ class ButtonElement(BlockElement):
         action_id: str,
         url: str = None,
         value: str = None,
-        style: str = "default",
+        style: str = STYLE_DEFAULT,
         confirm: ConfirmObject = None,
     ):
         # validate input
